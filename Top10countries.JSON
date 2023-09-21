@@ -1,14 +1,19 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "projection": {
+        "type": "equalEarth"
+    },
     "title": {
         "text": "Top 10 countries"
     },
     "data": {
-         "url": "https://raw.githubusercontent.com/FIT3179/Datasets/main/city_daily_cost.csv"
+         "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/Olympic_Swimming_Results_1912to2020%202.csv"
         },
         "mark": "bar",
         "encoding": {
-        "x": { "field": "daily_cost", "type": "quantitative" },
+        "x": { "field": "Location", "type": "nominal" },
         "y": { "field": "city", "type": "nominal" }
     }
 }
