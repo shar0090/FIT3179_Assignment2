@@ -1,0 +1,71 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "title": {"text": "Tokyo 2021 - Medals Per Country", "frame": "group"},
+    "projection": {"type": "naturalEarth1"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
+    "layer": [
+      {
+        "mark": {"type": "geoshape", "stroke": "white"},
+        "encoding": {
+          "color": {"value": "gray"}
+        }
+      },
+      {
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/Tokyo%20Medals%202021.csv"
+              },
+              "key": "Country",
+              "fields": ["Gold Medal", "Silver Medal", "Bronze Medal", "Total"]
+            }
+          }
+        ],
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "color": {
+            "condition": {"test": "datum['Total'] === null", "value": "gray"},
+            "field": "Total",
+            "title": "Number of Medals",
+            "type": "quantitative",
+            "legend": {"direction": "horizontal", "gradientLength": 120},
+            "scale": {
+              "type": "threshold",
+              "domain": [0, 10, 20, 30],
+              "scheme": "viridis"
+            }
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "ordinal", "title": "Country"},
+            {
+              "field": "Bronze Medal",
+              "type": "quantitative",
+              "title": "Bronze Medals"
+            },
+            {
+              "field": "Silver Medal",
+              "type": "quantitative",
+              "title": "Silver Medals"
+            },
+            {
+              "field": "Gold Medal",
+              "type": "quantitative",
+              "title": "Gold Medals"
+            },
+            {
+              "field": "Total",
+              "type": "quantitative",
+              "title": "Total no. of Medals"
+            }
+          ]
+        }
+      }
+    ]
+  }
