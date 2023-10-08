@@ -21,7 +21,7 @@
             "lookup": "properties.NAME",
             "from": {
               "data": {
-                "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/Tokyo%20Medals%202021.csv"
+                "url": "https://raw.githubusercontent.com/shar0090/FIT3179DATA/main/data/Tokyo%20Medals%202021.csv"
               },
               "key": "Country",
               "fields": ["Gold Medal", "Silver Medal", "Bronze Medal", "Total"]
