@@ -12,11 +12,17 @@
 </head>
 <body>
     <div id="MedalsPerCountry"></div>
+    <div id="MedalCountByStroke"></div>
 
 <script type="text/javascript">
 
   var spec2 = "js/MedalsPerCountry.JSON";
   vegaEmbed('#MedalsPerCountry', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec2 = "js/MedalCountByStroke.JSON";
+  vegaEmbed('#MedalCountByStroke', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
