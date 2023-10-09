@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+</head>
+
+<body>
+    <div id="vis2"></div>
+    <script>
+        const spec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "title": "Medal Count by Stroke. - Tokyo 2020 Olympics",
+            "description": "Comparison of swimming strokes by Team",
+            "data": {
+                "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/Olympic_Swimming_Results_1912to2020%202.csv",
+                "format": { "type": "csv" }
+            },
+            "params": [
+                {
+                    "name": "Country Selection",
+                    "bind": {
+                        "input": "select",
+                        "options": [
+                            null,
+                            "AFG",
+                            "ALB",
+                            "ALG",
+                            "AND",
+                            "ANT", "ARG", "ARM", "ARU", "ASA", "AUS", "AUT", "AZE", "BAH", "BAN", "BAR", "BDI", "BEL", "BE", "DAY", "BER", "BHU", "BIH"
+                        ],
+                        "labels": [
+                            "show all",
+                            "AFG",
+                            "ALB",
+                            "ALG",
+                            "AND",
+                            "ANT", "ARG", "ARM", "ARU", "ASA", "AUS", "AUT", "AZE", "BAH", "BAN", "BAR", "BDI", "BEL", "BE", "DAY", "BER", "BHU", "BIH"
+                        ],
+                        "name": "Continent Selection: "
+                    }
+                }
+            ],
+            "transform": [
+                {
+                    "calculate": "datum.sum_Rank",
+                    "as": "total_medals"
+                }
+            ],
+            "mark": "bar",
+            "encoding": {
+                "x": {
+                    "field": "Stroke",
+                    "type": "nominal",
+                    "axis": { "title": "Swimming Stroke" }
+                },
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Rank",
+                    "type": "quantitative",
+                    "axis": { "title": "Total Medal Count" }
+                },
+                "color": { "field": "Team", "type": "nominal", "legend": { "title": "Team" } },
+                "tooltip": [
+                    { "field": "Team", "type": "nominal", "title": "Team" },
+                    { "field": "sum_Rank", "type": "quantitative", "title": "Total Medals" }
+                ]
+            }
+        }
+        vegaEmbed("#vis2", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+    </script>
+</body>
+
+</html>
