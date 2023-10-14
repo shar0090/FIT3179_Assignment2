@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="chart"></div>
+  <div id="flags">
+    <img src="flag_url_1" alt="Country 1 Flag">
+    <img src="flag_url_2" alt="Country 2 Flag">
+    <!-- Add flags for the top 10 countries -->
+  </div>
+
+  <script>
+    const spec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "title": "Top 10 Performing Countries",
+      "data": {
+        "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/Olympic_Swimming_Results_1912to2020%202.csv"
+      },
+      "mark": {
+        "type": "bar",
+        "stack": "normalize"
+      },
+      "encoding": {
+        "x": {"field": "Team", "type": "ordinal", "title": "Country"},
+        "y": {"aggregate": "count", "field": "Rank", "type": "quantitative", "title": "Medal Count"},
+      },
+      "transform": [
+        {
+          "window": [{"op": "row_number", "as": "rank"}],
+          "sort": [{"field": "Rank", "order": "descending"}]
+        },
+        {
+          "filter": {"field": "rank", "lte": 10}
+        }
+      ]
+    };
+
+    const flagsDiv = document.getElementById('flags');
+    const flags = ['flag_url_1', 'flag_url_2', /* Add flag URLs for the top 10 countries */];
+    flags.forEach(flagURL => {
+      const img = document.createElement('img');
+      img.src = flagURL;
+      img.alt = 'Country Flag';
+      flagsDiv.appendChild(img);
+    });
+
+    vegaEmbed('#chart', spec);
+  </script>
+</body>
+</html>

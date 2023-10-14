@@ -1,6 +1,6 @@
 {
 	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-	"title": "Medal Count by Stroke. - Tokyo 2020 Olympics",
+	"title": "Medal Count by Stroke - Tokyo 2020 Olympics",
 	"description": "Comparison of swimming strokes by Team",
 	"data": {
 		"url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/Olympic_Swimming_Results_1912to2020%202.csv",
@@ -12,12 +12,7 @@
 			"bind": {
 				"input": "select",
 				"options": [
-					null,
-					"AFG",
-					"ALB",
-					"ALG",
-					"AND",
-					"ANT","ARG","ARM","ARU","ASA","AUS","AUT","AZE","BAH","BAN","BAR","BDI","BEL","BE","DAY","BER","BHU","BIH"
+					"datum.Team"
 				],
 				"labels": [
 					"show all",
@@ -36,10 +31,9 @@
 			"calculate": "datum.sum_Rank",
 			"as": "total_medals"
 		},
-		{
-			"calculate": "datum.Team",
-			"as": "continent_selection"
-		}
+			{
+			   "filter":  "Country Selection=='null'?Country Selection:datum.Team == Country Selection"
+			}
 	],
 	"mark": "bar",
 	"encoding": {

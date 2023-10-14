@@ -12,33 +12,33 @@
     <script>
         const spec = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "title": "Australian Medal count by stroke",
-                    "description": "Comparison of swimming strokes by Team",
-                        "data": {
+            "title": "Australian Medal count by stroke",
+            "description": "Comparison of swimming strokes by Team",
+            "data": {
                 "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/Olympic_Swimming_Results_1912to2020%202.csv",
-                    "format": { "type": "csv" }
+                "format": { "type": "csv" }
             },
             "transform": [
                 { "filter": { "field": "Team", "equal": "AUS" } },
                 { "calculate": "datum.Rank === '1' ? 'Gold' : (datum.Rank === '2' ? 'Silver': 'Bronze')", "as": "medal_category" }
             ],
-                "mark": { "type": "bar", "stack": "normalize" },
+            "mark": { "type": "bar", "stack": "normalize" },
             "encoding": {
                 "x": {
                     "aggregate": "count",
-                        "field": "Rank",
-                            "type": "quantitative",
-                                "axis": { "title": "Total Medal Count" }
+                    "field": "Rank",
+                    "type": "quantitative",
+                    "axis": { "title": "Total Medal Count" }
                 },
                 "y": {
                     "field": "Stroke",
-                        "type": "nominal",
-                            "axis": { "title": "Swimming Stroke" }
+                    "type": "nominal",
+                    "axis": { "title": "Swimming Stroke" }
                 },
                 "color": {
                     "field": "medal_category",
-                        "type": "nominal",
-                            "scale": { "domain": ["Gold", "Silver", "Bronze"], "range": ["#FFD700", "#C0C0C0", "#CD7F32"] },
+                    "type": "nominal",
+                    "scale": { "domain": ["Gold", "Silver", "Bronze"], "range": ["#FFD700", "#C0C0C0", "#CD7F32"] },
                     "title": "Medal"
                 },
                 "tooltip": [
