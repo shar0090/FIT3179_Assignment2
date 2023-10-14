@@ -73,7 +73,7 @@
       <div class="pure-u-1-2">
         <div class="description">
           <h2>Medal Count By Country</h2>
-          <p>This visualisation shows the total medal count for all the countries which participated in the Tokyo 2020 Olympics.</p>
+          <p>This visualisation shows the total medal count for all the countries which participated in the Tokyo 2020[2021] Olympics.</p>
         </div>
       </div>
       <div class="pure-u-1-2">
@@ -119,6 +119,7 @@
     var specVis1 = "./js/MedalsPerCountry.JSON";
     var specVis2 = "./js/MedalCountByStroke.JSON";
     var specVis3 = "./js/AusMedalCountByStroke.JSON";
+    var specVis4 = "./js/MedalsOverTheYears.JSON";
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
 
@@ -127,6 +128,10 @@
     }).catch(console.error);
 
     vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>

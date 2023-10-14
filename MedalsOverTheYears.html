@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+</head>
+
+<body>
+    <div id="vis4"></div>
+    <script>
+        const spec = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "title": "Number of Medals over the years (1912 - 2020)",
+            "description": "Medal count of all the countries combined, catergorised by the individual event (Stroke)",
+            "width": 350,
+            "height": 60,
+            "data": { "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/allSwimmingResults.csv" },
+            "mark": "area",
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "type": "temporal",
+                    "title": "Time",
+                    "axis": { "grid": false }
+                },
+                "y": {
+                    "field": "Rank",
+                    "aggregate": "sum",
+                    "type": "quantitative",
+                    "title": "Medals",
+                    "axis": { "grid": false }
+                },
+                "color": {
+                    "field": "Stroke",
+                    "type": "nominal",
+                    "legend": null
+                },
+                "row": {
+                    "field": "Stroke",
+                    "type": "nominal",
+                    "title": "Stroke"
+                },
+                "tooltip": [
+                    { "field": "Stroke", "title": "Stroke" },
+                    { "field": "Year", "type": "temporal", "title": "Year", "timeUnit": "year" },
+                    {
+                        "field": "Rank", "aggregate": "sum", "title": "No. of Medals"
+                    }]
+            }
+        }
+        vegaEmbed("#vis4", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
+    </script>
+</body>
+
+</html>
