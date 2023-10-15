@@ -67,6 +67,12 @@
     .container p {
       font-size: 12pt;
     }
+
+    .center-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
   </style>
 </head>
 
@@ -85,7 +91,7 @@
         </div>
       </div>
       <div class="row">
-        <div id="vis1" class="vis-container center"></div>
+        <div id="vis1" class="center-div"></div>
       </div>
   </div>
 
@@ -124,15 +130,16 @@
       <div class="col-sm-6">
         <h4 class="text-center" >Categorised by Stroke</h4>
         <p>This chart displays the cumulative count of medals won in swimming events across different strokes from the years 1912 to 2020. Showcasing trends in medal counts for each stroke over time.</p>
+        <div id="vis4" class="vis-container"></div>
       </div>
       <div class="col-sm-6">
         <h4 class="text-center">Categorised by Distance [in Meters]</h4>
         <p>This chart presents an overview of medal count trends in swimming events by the Distance Factor. It offers insights into the accumulation of medals over the specified time range.</p>
+        <div id="vis5" class="vis-container"></div>
       </div>
 
       <div class="row-col-1">
         <div id="vis4" class="vis-container"></div>
-        <div id="vis5" class="vis-container"></div>
       </div>
   </div>
 
