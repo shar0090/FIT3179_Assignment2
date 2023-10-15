@@ -22,9 +22,6 @@
     },
     "layer": [{
       "mark": "square",
-      "colour": {
-        "value": "blue"
-      },
       "encoding": {
         "tooltip": [
           {"field": "name", "title":"Country:"},
