@@ -157,6 +157,7 @@
     var specVis2 = "./js/MedalCountByStroke.JSON";
     var specVis3 = "./js/AusMedalCountByStroke.JSON";
     var specVis4 = "./js/MedalsOverTheYears.JSON";
+    var specVis5 = "./js/DistanceMedalsOverTheYears.JSON";
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
 
@@ -169,6 +170,10 @@
     }).catch(console.error);
 
     vegaEmbed('#vis4', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
