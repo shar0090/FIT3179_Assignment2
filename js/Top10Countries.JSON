@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Top 10 Countries",
+    "width": 400,
+    "data": {
+      "values": [
+        {"name": "🇺🇸", "count": 113},
+        {"name": "🇨🇳", "count": 88},
+        {"name": "🇷🇺", "count": 71},
+        {"name": "🇬🇧", "count": 65},
+        {"name": "🇯🇵", "count": 58},
+        {"name": "🇦🇺", "count": 46},
+        {"name": "🇮🇹", "count": 40},
+        {"name": "🇳🇱", "count": 36},
+        {"name": "🇩🇪", "count": 37},
+        {"name": "🇫🇷", "count": 33}
+      ]
+    },
+    "encoding": {
+      "y": {"field": "name", "type": "nominal", "sort": "-x", "title": null},
+      "x": {"field": "count", "type": "quantitative", "title": null}
+    },
+    "layer": [{
+      "mark": "square",
+      "colour": {
+        "value": "blue"
+      },
+      "encoding": {
+        "tooltip": [
+          {"field": "name", "title":"Country:"},
+          {"field": "count", "title":"Number of Medals:"}
+        ]
+      }
+    }, {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "xOffset": -4,
+        "aria": false
+      },
+      "encoding": {
+        "text": {"field": "count", "type": "quantitative"},
+        "color": {
+          "condition": {
+            "test": {"field": "count", "gt": 10},
+            "value": "white"
+          },
+          "value": "black"
+        }
+      }
+    }]
+  }
+  

@@ -1,54 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
-<body>
-  <div id="chart"></div>
-  <div id="flags">
-    <img src="flag_url_1" alt="Country 1 Flag">
-    <img src="flag_url_2" alt="Country 2 Flag">
-    <!-- Add flags for the top 10 countries -->
-  </div>
 
+<body>
+  <div id="vis6"></div>
   <script>
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Top 10 Performing Countries",
+      "title": "Top 10 Countries",
+      "width": 400,
       "data": {
-        "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/Olympic_Swimming_Results_1912to2020%202.csv"
-      },
-      "mark": {
-        "type": "bar",
-        "stack": "normalize"
+        "values": [
+          { "name": "🇺🇸", "count": 113 },
+          { "name": "🇨🇳", "count": 88 },
+          { "name": "🇷🇺", "count": 71 },
+          { "name": "🇬🇧", "count": 65 },
+          { "name": "🇯🇵", "count": 58 },
+          { "name": "🇦🇺", "count": 46 },
+          { "name": "🇮🇹", "count": 40 },
+          { "name": "🇳🇱", "count": 36 },
+          { "name": "🇩🇪", "count": 37 },
+          { "name": "🇫🇷", "count": 33 }
+        ]
       },
       "encoding": {
-        "x": {"field": "Team", "type": "ordinal", "title": "Country"},
-        "y": {"aggregate": "count", "field": "Rank", "type": "quantitative", "title": "Medal Count"},
+        "y": { "field": "name", "type": "nominal", "sort": "-x", "title": null },
+        "x": { "field": "count", "type": "quantitative", "title": null }
       },
-      "transform": [
-        {
-          "window": [{"op": "row_number", "as": "rank"}],
-          "sort": [{"field": "Rank", "order": "descending"}]
+      "layer": [{
+        "mark": "square",
+        "colour": {
+          "value": "blue"
         },
-        {
-          "filter": {"field": "rank", "lte": 10}
+        "encoding": {
+          "tooltip": [
+            { "field": "name", "title": "Country:" },
+            { "field": "count", "title": "Number of Medals:" }
+          ]
         }
-      ]
-    };
-
-    const flagsDiv = document.getElementById('flags');
-    const flags = ['flag_url_1', 'flag_url_2', /* Add flag URLs for the top 10 countries */];
-    flags.forEach(flagURL => {
-      const img = document.createElement('img');
-      img.src = flagURL;
-      img.alt = 'Country Flag';
-      flagsDiv.appendChild(img);
-    });
-
-    vegaEmbed('#chart', spec);
+      }, {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "xOffset": -4,
+          "aria": false
+        },
+        "encoding": {
+          "text": { "field": "count", "type": "quantitative" },
+          "color": {
+            "condition": {
+              "test": { "field": "count", "gt": 10 },
+              "value": "white"
+            },
+            "value": "black"
+          }
+        }
+      }]
+    }
+    vegaEmbed("#vis6", spec, { mode: "vega-lite" }).then(console.log).catch(console.warn);
   </script>
 </body>
+
 </html>
