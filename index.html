@@ -52,42 +52,46 @@
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
+  <!-- Bootstrap file-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+  <style>
+    .jumbotron p {
+      font-size: 15pt;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .container p {
+      font-size: 12pt;
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="page">
-
-    <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1>Tokyo 2020 Summer Olympics</h1>
-        <p>This visualisation visualises the data from the Tokyo 2020[2021] Olympics with a focus on the Swimming event</p>
-      </div>
+    <div class="jumbotron text-center">
+        <h2>Tokyo 2020 Summer Olympics</h2><br>
+        <p>This interactive visualisation offers a overview of the data from the Tokyo 2020 Summer Olympic Games, held in 2021 due to the COVID-19 Global Pandemic, with a focus on the Swimming Event. Explore the data to see how well the Australian team performed in this event as well as overall in the games.</p>
     </div>
-    <!-- end pure grid group -->
 
-    <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-2">
-        <div class="description">
-          <h2>Medal Count By Country</h2>
-          <p>This visualisation shows the total medal count for all the countries which participated in the Tokyo 2020[2021] Olympics.</p>
+    <div class="container">
+      <div class="row">
+          <h3 class="text-center">Medal Count By Country</h3>
+          <p class="text-center">This visualisation shows the total medal count for all the countries which participated in the Tokyo 2020 Olympics. <br> <b>Hover over</b> the countries to see how many medals they earnt overall throughout the games.</p>
         </div>
       </div>
-      <div class="pure-u-1-2">
+      <div class="row">
         <div id="vis1" class="vis-container"></div>
       </div>
-    </div>
-    
-    <!-- end pure grid group -->
+  </div>
 
-    <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-2">
-        <div class="description description-left">
-          <h2>Medal Count By Stroke</h2>
+    <div class="container">
+      <div class="row">
+          <h3>Medal Count By Stroke</h3>
           <p>This visualisation shows the medal count for each event, categorised by the participating team [Country], 
             this is shown by the country IOC Code.</p>
         </div>
@@ -99,10 +103,10 @@
     <!-- end pure grid group -->
 <br>
     <!-- pure grid group -->
-    <div class="pure-g">
-      <div class="pure-u-1-2">
+    <div class="container">
+      <div class="row">
         <div class="description description-right">
-          <h2>Australian Medal Count by stroke</Main></h2>
+          <h3>Australian Medal Count by stroke</h3>
           <p>Comparison of the individual medal counts for each swimming event [strokes] by the Australian Swimming Team</p>
         </div>
       </div>
@@ -111,9 +115,42 @@
       </div>
 
     </div>
-    <!-- end pure grid group -->
+
+    <div class="container">
+      <div class="row">
+          <h3 class="text-center">Number of Medals over the years (1912 - 2020)</h3>
+          <p class="text-center">These visualisations show the number of medals earnt in each category [Left]</p>
+      </div>
+      <div class="col-sm-6">
+        <h4 class="text-center" >Categorised by Stroke</h4>
+        <p>This chart displays the cumulative count of medals won in swimming events across different strokes from the years 1912 to 2020. Showcasing trends in medal counts for each stroke over time.</p>
+      </div>
+      <div class="col-sm-6">
+        <h4 class="text-center">Categorised by Distance [in Meters]</h4>
+        <p>This chart presents an overview of medal count trends in swimming events by the Distance Factor. It offers insights into the accumulation of medals over the specified time range.</p>
+      </div>
+
+      <div class="row-col-1">
+        <div id="vis4" class="vis-container"></div>
+        <div id="vis5" class="vis-container"></div>
+      </div>
+  </div>
+
+    <!--Number of Medals over the years (1912 - 2020)-->
 
   </div> <!-- end page -->
+  <!-- Button to scroll to the top -->
+  <div class="grey-bar text-center">
+    <button onclick="scrollToTop()" class="scroll-btn btn">Scroll to Top</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scroll behavior
+      });
+    }
+  </script>
 
   <script type="text/javascript">
     var specVis1 = "./js/MedalsPerCountry.JSON";
@@ -136,5 +173,4 @@
     }).catch(console.error);
   </script>
 </body>
-
 </html>

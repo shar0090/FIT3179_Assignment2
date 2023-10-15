@@ -10,7 +10,7 @@
       {"filter": {"field": "Team", "equal": "AUS"}},
       {"calculate": "datum.Rank === '1' ? 'Gold' : (datum.Rank === '2' ? 'Silver': 'Bronze')", "as": "medal_category"}
     ],
-    "mark": {"type": "bar", "stack": "normalize"},
+    "mark": {"type": "bar"},
     "encoding": {
       "x": {
         "aggregate": "count",

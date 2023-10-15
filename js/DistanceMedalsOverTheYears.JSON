@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Number of Medals over the years (1912 - 2020)",
+    "description": "Stock prices of four large companies as a small multiples of area charts.",
+    "width": 350,
+    "height": 60,
+    "data": {
+        "url": "https://raw.githubusercontent.com/shar0090/FIT3179_Assignment2/main/data/allSwimmingResults.csv"
+    },
+    "mark": "area",
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Time",
+            "axis": {
+                "grid": false
+            }
+        },
+        "y": {
+            "field": "Rank",
+            "aggregate": "sum",
+            "type": "quantitative",
+            "title": "Medals",
+            "axis": {
+                "grid": false
+            }
+        },
+        "color": {
+            "field": "Stroke",
+            "type": "nominal",
+            "legend": "Stroke"
+        },
+        "row": {
+            "field": "Distance (in meters)",
+            "type": "nominal",
+            "title": "Stroke"
+        },
+        "tooltip": [
+            {
+                "field": "Stroke",
+                "title": "Stroke"
+            },
+            {
+                "field": "Year",
+                "type": "temporal",
+                "title": "Year",
+                "timeUnit": "year"
+            },
+            {
+                "field": "Rank",
+                "aggregate": "sum",
+                "title": "No. of Medals"
+            }
+        ]
+    }
+}
