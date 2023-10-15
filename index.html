@@ -97,13 +97,15 @@
 
     <div class="container">
       <div class="row">
-          <h3>Medal Count By Stroke</h3>
-          <p>This visualisation shows the medal count for each event, categorised by the participating team [Country], 
-            this is shown by the country IOC Code.</p>
+          <h3>Top 10 Countries [Teams] - Swimming</h3>
+          <p>This chart visualizes the top 10 countries [Teams] based on the number of medals they earned in the 2020 Olympics in the Swimming Event. The chart uses icons to represent each country, with the size of the squares indicating the count of medals. The chart also includes text annotations to display the exact count of medals for each country.</p>
         </div>
       </div>
-      <div class="pure-u-1-2">
-        <div id="vis2" class="vis-container"></div>
+      <div class="col-sm-6">
+        <div id="vis6" class="vis-container"></div>
+      </div>
+      <div class="col-sm-6">
+        <p>Looking at the visualisation, it's evident that the United States (🇺🇸) <br>has the highest medal count among the top 10 countries,<br> followed by China (🇨🇳) and Russia (🇷🇺), this places Australia (🇦🇺) at No.6 <br>in the top 10 list.</p>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -116,10 +118,12 @@
           <p>Comparison of the individual medal counts for each swimming event [strokes] by the Australian Swimming Team</p>
         </div>
       </div>
-      <div class="pure-u-1-2">
+      <div class="col-sm-6">
         <div id="vis3" class="vis-container"></div>
       </div>
-
+      <div class="col-sm-6">
+        <p>Comparison of the individual medal counts for each swimming event [strokes] by the Australian Swimming Team</p>
+      </div>
     </div>
 
     <div class="container">
@@ -129,12 +133,12 @@
       </div>
       <div class="col-sm-6">
         <h4 class="text-center" >Categorised by Stroke</h4>
-        <p>This chart displays the cumulative count of medals won in swimming events across different strokes from the years 1912 to 2020. Showcasing trends in medal counts for each stroke over time.</p>
+        <p>This chart displays the cumulative count of medals won in <br>swimming events across different strokes from the years 1912 to 2020. <br>Showcasing trends in medal counts for each stroke over time.</p>
         <div id="vis4" class="vis-container"></div>
       </div>
       <div class="col-sm-6">
         <h4 class="text-center">Categorised by Distance [in Meters]</h4>
-        <p>This chart presents an overview of medal count trends in swimming events by the Distance Factor. It offers insights into the accumulation of medals over the specified time range.</p>
+        <p>This chart presents an overview of medal count trends in swimming events <br> by the Distance Factor. It offers insights into the accumulation <br>of medals over the specified time range.</p>
         <div id="vis5" class="vis-container"></div>
       </div>
   </div>
@@ -142,6 +146,7 @@
     <!--Number of Medals over the years (1912 - 2020)-->
 
   </div> <!-- end page -->
+  <br>
   <br>
   <!-- Button to scroll to the top -->
   <div class="grey-bar text-center">
@@ -162,6 +167,7 @@
     var specVis3 = "./js/AusMedalCountByStroke.JSON";
     var specVis4 = "./js/MedalsOverTheYears.JSON";
     var specVis5 = "./js/DistanceMedalsOverTheYears.JSON";
+    var specVis6 = "./js/Top10Countries.JSON";
 
     vegaEmbed('#vis1', specVis1, { "actions": false });
 
@@ -178,6 +184,10 @@
     }).catch(console.error);
 
     vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis6', specVis5, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
